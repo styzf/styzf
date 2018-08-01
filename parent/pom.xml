@@ -1,0 +1,431 @@
+<project xmlns = "http://maven.apache.org/POM/4.0.0" 
+	     xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+	     xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent> 
+		<groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-starter-parent</artifactId> 
+		<version>1.5.6.RELEASE</version> 
+	</parent>
+  
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.styzf</groupId>
+	<artifactId>parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+  
+  	 <!-- 定义全局的属性(定义jar包的版本号) -->
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+        <mybatis-plus.version>2.1.9</mybatis-plus.version>
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <jackson.version>2.8.5</jackson.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
+        <pagehelper.version>5.0.0</pagehelper.version>
+        <mapper.version>3.4.0</mapper.version>
+        <jedis.version>2.9.0</jedis.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <zookeeper.version>3.4.8</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+        <solrj.version>5.3.0</solrj.version>
+        <activemq.version>5.14.5</activemq.version>
+        <freemarker.version>2.3.26-incubating</freemarker.version>
+        <joda-time.version>2.5</joda-time.version>
+        <quartz.version>2.2.2</quartz.version>
+        <druid.version>1.0.18</druid.version>
+        <aspectj.version>1.8.0</aspectj.version>
+        <cassandra.version>3.11.0</cassandra.version>
+        <p6spy.version>3.6.0</p6spy.version>
+        <aspectjweaver.version>1.9.1</aspectjweaver.version>
+        <orika.version>1.5.2</orika.version>
+        <poi.version>3.9</poi.version>
+        <jdom.version>1.1.3</jdom.version>
+        <logstash.version>4.11</logstash.version>
+        <springfox.swagger.version>2.5.0</springfox.swagger.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <axis.version>1.4</axis.version>
+        
+        <commons-httpclient.version>3.0</commons-httpclient.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-io.version>1.3.2</commons-io.version>
+        <commons-net.version>3.3</commons-net.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <commons-discovery.version>0.2</commons-discovery.version>
+        
+        <kafka.version>1.1.0</kafka.version>
+        <spring.integration.kafka.version>2.1.0.RELEASE</spring.integration.kafka.version>
+    </properties>
+    
+    <!-- 依赖管理配置(用于锁定指定版本) -->
+    <dependencyManagement>
+	    <dependencies>
+	        <!-- 消息队列中间件 -->
+	        <!-- kafka -->
+			<dependency>
+			    <groupId>org.apache.kafka</groupId>
+			    <artifactId>kafka-clients</artifactId>
+			    <version>${kafka.version}</version>
+			</dependency>
+			<dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-kafka</artifactId>
+                <version>${spring.integration.kafka.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+                <scope>compile</scope>
+            </dependency>
+			<!-- activeMQ依赖 -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>${activemq.version}</version>
+            </dependency>
+            <!-- spring-jms -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            
+	        <dependency>
+	            <groupId>com.alibaba</groupId>
+	            <artifactId>fastjson</artifactId>
+	            <version>${fastjson.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.apache.axis</groupId>
+	            <artifactId>axis</artifactId>
+	            <version>${axis.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>axis</groupId>
+	            <artifactId>axis-jaxrpc</artifactId>
+	            <version>${axis.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>axis</groupId>
+	            <artifactId>axis-saaj</artifactId>
+	            <version>${axis.version}</version>
+	        </dependency>
+
+	        <dependency>
+	            <groupId>io.springfox</groupId>
+	            <artifactId>springfox-swagger2</artifactId>
+	            <version>${springfox.swagger.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>io.springfox</groupId>
+	            <artifactId>springfox-swagger-ui</artifactId>
+	            <version>${springfox.swagger.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>net.logstash.logback</groupId>
+	            <artifactId>logstash-logback-encoder</artifactId>
+	            <version>${logstash.version}</version>
+	        </dependency>
+	        <dependency>
+	          <groupId>org.jdom</groupId>
+	          <artifactId>jdom</artifactId>
+	          <version>${jdom.version}</version>
+	        </dependency>
+	        <dependency>
+	          <groupId>org.apache.poi</groupId>
+	          <artifactId>poi-excelant</artifactId>
+	          <version>${poi.version}</version>
+	        </dependency>
+	        <dependency>
+	          <groupId>ma.glasnost.orika</groupId>
+	          <artifactId>orika-core</artifactId>
+	          <version>${orika.version}</version>
+	        </dependency>
+		    <dependency>
+			    <groupId>org.aspectj</groupId>
+			    <artifactId>aspectjweaver</artifactId>
+			    <version>${aspectjweaver.version}</version>
+			</dependency>
+	    	<dependency>
+			   <groupId>p6spy</groupId>
+			   <artifactId>p6spy</artifactId>
+			   <version>${p6spy.version}</version>
+			</dependency>
+            <dependency>  
+			  <groupId>org.aspectj</groupId>  
+			  <artifactId>aspectjrt</artifactId>  
+			  <version>${aspectj.version}</version>  
+			</dependency>  
+			<dependency>  
+			  <groupId>org.aspectj</groupId>  
+			  <artifactId>aspectjweaver</artifactId>  
+			  <version>${aspectj.version}</version>  
+			</dependency> 
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-juli</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- 单元测试 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- servlet-api、jsp-api、el-api -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-jsp-api</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- jstl -->
+            <dependency>
+                <groupId>jstl</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.version}</version>
+            </dependency>
+
+            <!-- Spring4 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-aop</artifactId>
+			    <version>${spring.version}</version>
+			</dependency>
+            
+            <dependency>
+	            <groupId>org.mybatis.spring.boot</groupId>
+	            <artifactId>mybatis-spring-boot-starter</artifactId>
+	            <version>${mybatis-spring-boot-starter.version}</version>
+	        </dependency>
+            <dependency>
+		        <groupId>com.baomidou</groupId>
+		        <artifactId>mybatis-plus</artifactId>
+		        <version>${mybatis-plus.version}</version>
+		    </dependency>
+            <!-- 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <!-- 通用Mapper -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>${mapper.version}</version>
+            </dependency>
+            <!-- 连接池 -->
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${c3p0.version}</version>
+            </dependency>
+            
+            <!-- 日志 -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- Jackson JSON处理工具包 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            
+            <!-- apache工具组件 -->
+            <dependency>
+                <groupId>commons-discovery</groupId>
+                <artifactId>commons-discovery</artifactId>
+                <version>${commons-discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons-httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <!-- 文件上传组件 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <!-- 加密解密 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <!-- 日志 -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
+
+            <!-- dubbo相关 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <!-- 排除spring的jar包依赖 -->
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- zookeeper分布式协调服务 -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>jline</groupId>
+                        <artifactId>jline</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- zkclient(zookeeper客户端) -->
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <!-- Redis客户端 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <!-- solrj客户端 -->
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-solrj</artifactId>
+                <version>${solrj.version}</version>
+            </dependency>
+
+            <!-- 静态化freemarker -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+            
+            <!-- 时间操作组件 -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            
+            <!-- 定时任务Quartz -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>c3p0</groupId>
+                        <artifactId>c3p0</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <!-- 项目构建部分 -->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <!-- 插件管理(用于锁定插件版本) -->
+        <pluginManagement>
+            <plugins>
+                <!-- 配置tomcat插件 -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
