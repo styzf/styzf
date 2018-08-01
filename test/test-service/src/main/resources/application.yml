@@ -1,0 +1,133 @@
+styzf:
+  dateConverter:
+    date-format:
+      - yyyy-MM-dd HH:mm:ss
+      - yyyy-MM-dd
+  config:
+    dubbo:
+      zookeeper-address: 192.168.114.129:2181,192.168.114.130:2181,192.168.114.131:2181
+      owner: styzf
+      application-version: 2.0
+      provider-version: styzf.2.0.0
+      port: 30002
+      timeout: 50000
+      retries: 0
+      threads: 100
+      payload: 1000000000
+    # kafka示例配置
+    kafka:
+      servers: 192.168.114.129:9092,192.168.114.130:9092,192.168.114.131:9092
+      consumerTopicConfig:
+          -
+            topic: TEST1
+            beanId: testService
+            responseTopic: STYZF_RESPONSE
+            sendTopics:
+          -
+            topic: TEST2
+            beanId: test2Service
+            responseTopic: STYZF_RESPONSE
+            sendTopics:
+          -
+            topic: STYZF_RESPONSE
+            beanId: kafkaResponseService
+            responseTopic:
+            sendTopics:
+      producer:
+        retries: 0
+        batch-size: 16348
+        linger-ms: 1
+        buffer-memory: 33554432
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      consumer:
+        enable-auto-commit: true
+        auto-commit-interval-ms: 100
+        max-poll-records: 200
+        session-timeout-ms: 15000
+        poll-timeout: 300000
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        group-id: calendar-group
+        auto-offset-reset: earliest
+ 
+server:
+    port: 9495
+    session:
+        timeout: 30
+    context-path: /styzf-test
+    tomcat:
+        uri-encoding: UTF-8
+
+mybatis-plus:
+    mapperLocations: classpath:/mapper/*.xml
+    typeAliasesPackage: com.styzf.test.entity
+    global-config:
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: 2
+      #驼峰下划线转换
+      db-column-underline: true
+      #刷新mapper 调试神器
+      refresh-mapper: true
+      #数据库大写下划线转换
+      capital-mode: true
+      #逻辑删除配置（下面3个配置）
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+    configuration:
+      map-underscore-to-camel-case: true
+      cache-enabled: false
+#logging
+logging:
+  level: warn
+
+dataSourceConfig: &dataSourceConfig
+  driverClassName: com.mysql.jdbc.Driver
+  type: com.alibaba.druid.pool.DruidDataSource
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  # 配置获取连接等待超时的时间
+  maxWait: 60000
+  validationQuery: SELECT 1
+  testOnBorrow: false
+  testOnReturn: false
+  testWhileIdle: true
+  minEvictableIdleTimeMillis: 25200000
+  # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+  timeBetweenEvictionRunsMillis: 60000
+  removeAbandoned: true
+  removeAbandonedTimeout: 1800
+  # 打开PSCache，并且指定每个连接上PSCache的大小
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  logAbandoned: true
+  # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+  filters: stat,wall,log4j
+  useGlobalDataSourceStat: true
+
+spring: 
+#   mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+   datasourceCluster:
+         nodes:
+            #可配置多个数据节点，每个节点包含1个写数据源，n个只读数据源
+            - name: styzf-test  #数据节点名称
+              writeHost: styzf-write   #读写数据源
+              readHost: styzf-read  #只读数据源
+              isDefault: true   #缺省数据节点，要求必须指定唯一一个缺省数据节点
+   styzf-write:
+         platform: mysql
+         url: jdbc:mysql://192.168.114.129:3306/styzf_test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+         username: root
+         password: root
+         <<: *dataSourceConfig
+   styzf-read:
+         defaultReadOnly: true
+         platform: mysql
+         url: jdbc:mysql://192.168.114.129:3306/styzf_test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+         username: root
+         password: root
+         <<: *dataSourceConfig

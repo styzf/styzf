@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      				  http://www.springframework.org/schema/beans/spring-beans.xsd
+      				  http://code.alibabatech.com/schema/dubbo 
+      				  http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+      				  http://www.springframework.org/schema/context
+      				  http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置当前应用的名称,提供方应用信息，用于计算依赖关系 -->  
+    <dubbo:application name="stzyf-test-service" owner="${styzf.config.dubbo.owner}" version="${styzf.config.dubbo.application-version}" />
+	<dubbo:provider timeout="${styzf.config.dubbo.timeout}" retries="${styzf.config.dubbo.retries}"></dubbo:provider>
+	<!-- zookeepper注册中心 发现服务地址  -->
+	<dubbo:registry id="stzyf-test-service-registry" protocol="zookeeper" address="${styzf.config.dubbo.zookeeper-address}" />
+    
+            <!--  服务线程池大小 -->
+    <dubbo:protocol name="dubbo" port="${styzf.config.dubbo.port}" threads="${styzf.config.dubbo.threads}" payload="${styzf.config.dubbo.payload}"/>
+    
+	<dubbo:service interface="com.styzf.test.service.ITestService" ref="testService" 
+                   version="${styzf.config.dubbo.provider-version}" registry="stzyf-test-service-registry"/>
+	<dubbo:service interface="com.styzf.test.service.IUserService" ref="userService" 
+                   version="${styzf.config.dubbo.provider-version}" registry="stzyf-test-service-registry"/>
+	<dubbo:service interface="com.styzf.test.service.IUserReadOnlyService" ref="userReadOnlyService" 
+                   version="${styzf.config.dubbo.provider-version}" registry="stzyf-test-service-registry"/>
+
+</beans>

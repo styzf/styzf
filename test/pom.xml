@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.styzf</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.styzf</groupId>
+  <artifactId>test</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <modules>
+  	<module>test-web</module>
+  	<module>test-service</module>
+  	<module>test-api</module>
+  </modules>
+  
+  <properties>
+    <styzf-test.version>1.0.0-SNAPSHOT</styzf-test.version>
+    <styzf-mybatis-plus.version>1.0.0-SNAPSHOT</styzf-mybatis-plus.version>
+    <styzf-core-common.version>1.0.0-SNAPSHOT</styzf-core-common.version>
+    <styzf-kafka.version>1.0.0-SNAPSHOT</styzf-kafka.version>
+  </properties>
+  
+  <dependencyManagement>
+	  <dependencies>
+	    <dependency>
+	        <groupId>com.styzf</groupId>
+		    <artifactId>common</artifactId>
+		    <version>${styzf-core-common.version}</version>
+	    </dependency>
+	    <dependency>
+            <groupId>com.styzf</groupId>
+            <artifactId>styzf-mybatis-plus</artifactId>
+            <version>${styzf-mybatis-plus.version}</version>
+        </dependency>
+	    <dependency>
+	        <groupId>com.styzf</groupId>
+	        <artifactId>test-api</artifactId>
+	        <version>${styzf-test.version}</version>
+	    </dependency>
+	    <dependency>
+	         <groupId>com.styzf</groupId>
+			 <artifactId>kafka</artifactId>
+			 <version>${styzf-kafka.version}</version>
+	    </dependency>
+	  </dependencies>
+  </dependencyManagement>
+  
+</project>
