@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.styzf.test.mapper.StyzfTestMainMapper" >
+  <resultMap id="BaseResultMap" type="com.styzf.test.entity.StyzfTestMain" >
+    <id column="test_id" property="testId" jdbcType="VARCHAR" />
+    <result column="test_rel_id" property="testRelId" jdbcType="VARCHAR" />
+    <result column="test_name" property="testName" jdbcType="VARCHAR" />
+    <result column="test_age" property="testAge" jdbcType="INTEGER" />
+    <result column="attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="attribute2" property="attribute2" jdbcType="VARCHAR" />
+    <result column="attribute3" property="attribute3" jdbcType="VARCHAR" />
+    <result column="attribute4" property="attribute4" jdbcType="VARCHAR" />
+    <result column="attribute5" property="attribute5" jdbcType="VARCHAR" />
+    <result column="doc_creator_id" property="docCreatorId" jdbcType="VARCHAR" />
+    <result column="doc_create_time" property="docCreateTime" jdbcType="TIMESTAMP" />
+    <result column="doc_last_update_id" property="docLastUpdateId" jdbcType="VARCHAR" />
+    <result column="doc_last_update_time" property="docLastUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    test_id, test_rel_id, test_name, test_age, attribute1, attribute2, attribute3, attribute4, 
+    attribute5, doc_creator_id, doc_create_time, doc_last_update_id, doc_last_update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.styzf.test.entity.StyzfTestMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from styzf_test_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from styzf_test_main
+    where test_id = #{testId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from styzf_test_main
+    where test_id = #{testId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.styzf.test.entity.StyzfTestMainExample" >
+    delete from styzf_test_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.styzf.test.entity.StyzfTestMain" >
+    insert into styzf_test_main (test_id, test_rel_id, test_name, 
+      test_age, attribute1, attribute2, 
+      attribute3, attribute4, attribute5, 
+      doc_creator_id, doc_create_time, doc_last_update_id, 
+      doc_last_update_time)
+    values (#{testId,jdbcType=VARCHAR}, #{testRelId,jdbcType=VARCHAR}, #{testName,jdbcType=VARCHAR}, 
+      #{testAge,jdbcType=INTEGER}, #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, 
+      #{attribute3,jdbcType=VARCHAR}, #{attribute4,jdbcType=VARCHAR}, #{attribute5,jdbcType=VARCHAR}, 
+      #{docCreatorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, #{docLastUpdateId,jdbcType=VARCHAR}, 
+      #{docLastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.styzf.test.entity.StyzfTestMain" >
+    insert into styzf_test_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        test_id,
+      </if>
+      <if test="testRelId != null" >
+        test_rel_id,
+      </if>
+      <if test="testName != null" >
+        test_name,
+      </if>
+      <if test="testAge != null" >
+        test_age,
+      </if>
+      <if test="attribute1 != null" >
+        attribute1,
+      </if>
+      <if test="attribute2 != null" >
+        attribute2,
+      </if>
+      <if test="attribute3 != null" >
+        attribute3,
+      </if>
+      <if test="attribute4 != null" >
+        attribute4,
+      </if>
+      <if test="attribute5 != null" >
+        attribute5,
+      </if>
+      <if test="docCreatorId != null" >
+        doc_creator_id,
+      </if>
+      <if test="docCreateTime != null" >
+        doc_create_time,
+      </if>
+      <if test="docLastUpdateId != null" >
+        doc_last_update_id,
+      </if>
+      <if test="docLastUpdateTime != null" >
+        doc_last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        #{testId,jdbcType=VARCHAR},
+      </if>
+      <if test="testRelId != null" >
+        #{testRelId,jdbcType=VARCHAR},
+      </if>
+      <if test="testName != null" >
+        #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testAge != null" >
+        #{testAge,jdbcType=INTEGER},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        #{attribute3,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute4 != null" >
+        #{attribute4,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute5 != null" >
+        #{attribute5,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreatorId != null" >
+        #{docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreateTime != null" >
+        #{docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docLastUpdateId != null" >
+        #{docLastUpdateId,jdbcType=VARCHAR},
+      </if>
+      <if test="docLastUpdateTime != null" >
+        #{docLastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.styzf.test.entity.StyzfTestMainExample" resultType="java.lang.Integer" >
+    select count(*) from styzf_test_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update styzf_test_main
+    <set >
+      <if test="record.testId != null" >
+        test_id = #{record.testId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testRelId != null" >
+        test_rel_id = #{record.testRelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testName != null" >
+        test_name = #{record.testName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testAge != null" >
+        test_age = #{record.testAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.attribute1 != null" >
+        attribute1 = #{record.attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attribute2 != null" >
+        attribute2 = #{record.attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attribute3 != null" >
+        attribute3 = #{record.attribute3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attribute4 != null" >
+        attribute4 = #{record.attribute4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attribute5 != null" >
+        attribute5 = #{record.attribute5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docCreatorId != null" >
+        doc_creator_id = #{record.docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docCreateTime != null" >
+        doc_create_time = #{record.docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.docLastUpdateId != null" >
+        doc_last_update_id = #{record.docLastUpdateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docLastUpdateTime != null" >
+        doc_last_update_time = #{record.docLastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update styzf_test_main
+    set test_id = #{record.testId,jdbcType=VARCHAR},
+      test_rel_id = #{record.testRelId,jdbcType=VARCHAR},
+      test_name = #{record.testName,jdbcType=VARCHAR},
+      test_age = #{record.testAge,jdbcType=INTEGER},
+      attribute1 = #{record.attribute1,jdbcType=VARCHAR},
+      attribute2 = #{record.attribute2,jdbcType=VARCHAR},
+      attribute3 = #{record.attribute3,jdbcType=VARCHAR},
+      attribute4 = #{record.attribute4,jdbcType=VARCHAR},
+      attribute5 = #{record.attribute5,jdbcType=VARCHAR},
+      doc_creator_id = #{record.docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{record.docCreateTime,jdbcType=TIMESTAMP},
+      doc_last_update_id = #{record.docLastUpdateId,jdbcType=VARCHAR},
+      doc_last_update_time = #{record.docLastUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.styzf.test.entity.StyzfTestMain" >
+    update styzf_test_main
+    <set >
+      <if test="testRelId != null" >
+        test_rel_id = #{testRelId,jdbcType=VARCHAR},
+      </if>
+      <if test="testName != null" >
+        test_name = #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testAge != null" >
+        test_age = #{testAge,jdbcType=INTEGER},
+      </if>
+      <if test="attribute1 != null" >
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        attribute3 = #{attribute3,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute4 != null" >
+        attribute4 = #{attribute4,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute5 != null" >
+        attribute5 = #{attribute5,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreatorId != null" >
+        doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreateTime != null" >
+        doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docLastUpdateId != null" >
+        doc_last_update_id = #{docLastUpdateId,jdbcType=VARCHAR},
+      </if>
+      <if test="docLastUpdateTime != null" >
+        doc_last_update_time = #{docLastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where test_id = #{testId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.styzf.test.entity.StyzfTestMain" >
+    update styzf_test_main
+    set test_rel_id = #{testRelId,jdbcType=VARCHAR},
+      test_name = #{testName,jdbcType=VARCHAR},
+      test_age = #{testAge,jdbcType=INTEGER},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      attribute3 = #{attribute3,jdbcType=VARCHAR},
+      attribute4 = #{attribute4,jdbcType=VARCHAR},
+      attribute5 = #{attribute5,jdbcType=VARCHAR},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      doc_last_update_id = #{docLastUpdateId,jdbcType=VARCHAR},
+      doc_last_update_time = #{docLastUpdateTime,jdbcType=TIMESTAMP}
+    where test_id = #{testId,jdbcType=VARCHAR}
+  </update>
+</mapper>
