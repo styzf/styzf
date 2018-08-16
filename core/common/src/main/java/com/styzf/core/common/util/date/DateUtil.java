@@ -1,13 +1,14 @@
 package com.styzf.core.common.util.date;
 
-import org.apache.log4j.Logger;
-
 import com.styzf.core.common.constant.DateConstant;
 
 import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -23,7 +24,7 @@ public class DateUtil {
       
     private static final Object object = new Object();
 
-	private static final Logger logger = Logger.getLogger(DateUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(DateUtil.class);
     
     /** 
      * 获取SimpleDateFormat 
