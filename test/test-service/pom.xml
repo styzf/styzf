@@ -11,6 +11,12 @@
         <dependency>
            <groupId>com.styzf</groupId>
            <artifactId>kafka</artifactId>
+           <exclusions>
+            <exclusion>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+            </exclusion>
+           </exclusions>
         </dependency>
         <dependency>
            <groupId>com.styzf</groupId>
@@ -19,6 +25,20 @@
         <dependency>
             <groupId>com.styzf</groupId>
             <artifactId>test-api</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.logstash.logback</groupId>
+                    <artifactId>logstash-logback-encoder</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,6 +48,18 @@
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.logstash.logback</groupId>
+                    <artifactId>logstash-logback-encoder</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -60,21 +92,27 @@
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-web</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
 		</dependency>
-		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>	
 			
 		<!-- MyBatis3 -->
 		<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.logstash.logback</groupId>
+                    <artifactId>logstash-logback-encoder</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 		<!-- 分页插件 -->
 		<dependency>
@@ -91,11 +129,6 @@
 		<dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-		<!-- Jackson JSON处理工具包 -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
 		</dependency>
 		<!-- apache工具组件 -->
 		<dependency>

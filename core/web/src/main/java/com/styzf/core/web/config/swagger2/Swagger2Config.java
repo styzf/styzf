@@ -33,4 +33,5 @@ public class Swagger2Config {
         ApiInfo apiInfo = new ApiInfo(apiInfoProperties.getTitle(), apiInfoProperties.getDescription(), apiInfoProperties.getVersion(), apiInfoProperties.getTermsOfServiceUrl(), new springfox.documentation.service.Contact(contact.getName(), contact.getUrl(), contact.getEmail()), apiInfoProperties.getLicense(), apiInfoProperties.getLicenseUrl());
         return apiInfo;
     }
+    
 }

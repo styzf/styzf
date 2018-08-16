@@ -9,7 +9,7 @@ styzf:
       owner: styzf
       application-version: 2.0
       provider-version: styzf.2.0.0
-      port: 30002
+      port: 30003
       timeout: 50000
       retries: 0
       threads: 100

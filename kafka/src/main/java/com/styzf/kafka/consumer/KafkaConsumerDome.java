@@ -13,6 +13,7 @@ public class KafkaConsumerDome extends Thread{
     private final KafkaConsumer<Integer, String> consumer;
     
     public KafkaConsumerDome(String topic) {
+        
         Properties properties = new Properties();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, 
                 "192.168.114.129:9092,192.168.114.130:9092,192.168.114.131:9092");
@@ -31,10 +32,15 @@ public class KafkaConsumerDome extends Thread{
     public void run() {
         while (true) {
             ConsumerRecords<Integer, String> consumerRecords = consumer.poll(1000);
+            System.out.println(consumerRecords.count());
             for (ConsumerRecord<Integer, String> consumerRecord : consumerRecords) {
                 System.out.println("msg:" + consumerRecord.value());
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            
         }
     }
     

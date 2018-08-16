@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Configuration
-@ConfigurationProperties(prefix="spring.datasourceCluster")
+@ConfigurationProperties(prefix="spring.datasource-cluster")
 public class P6DataSourceClusterConfig {
     private static final Log logger = LogFactory.getLog(P6DataSourceClusterConfig.class);
     
@@ -39,7 +39,7 @@ public class P6DataSourceClusterConfig {
     @Bean("dataSoure")
     public DataSource dataSource() {
         if (logger.isInfoEnabled()) {
-          logger.info(StringUtils.center(" new dataSource! ", 80, "*"));
+            logger.info(StringUtils.center(" new dataSource! ", 80, "*"));
         }
         
         DynamicRountingDataSource ds = new DynamicRountingDataSource();
@@ -123,13 +123,9 @@ public class P6DataSourceClusterConfig {
         
         
         long minEvictableIdleTimeMillis = ((Long)environment.getProperty(String.format("spring.%s.minEvictableIdleTimeMillis", new Object[] { dsName }), Long.class)).longValue();
-        
         long timeBetweenEvictionRunsMillis = ((Long)environment.getProperty(String.format("spring.%s.timeBetweenEvictionRunsMillis", new Object[] { dsName }), Long.class)).longValue();
         boolean removeAbandoned = ((Boolean)environment.getProperty(String.format("spring.%s.removeAbandoned", new Object[] { dsName }), Boolean.class)).booleanValue();
-        
         int removeAbandonedTimeout = ((Integer)environment.getProperty(String.format("spring.%s.removeAbandonedTimeout", new Object[] { dsName }), Integer.class)).intValue();
-        
-        
         boolean poolPreparedStatements = ((Boolean)environment.getProperty(String.format("spring.%s.poolPreparedStatements", new Object[] { dsName }), Boolean.class)).booleanValue();
         int maxPoolPreparedStatementPerConnectionSize = ((Integer)environment.getProperty(
                 String.format("spring.%s.maxPoolPreparedStatementPerConnectionSize", new Object[] { dsName }), Integer.class)).intValue();
@@ -162,12 +158,12 @@ public class P6DataSourceClusterConfig {
         datasource.setLogAbandoned(logAbandoned);
         datasource.setUseGlobalDataSourceStat(useGlobalDataSourceStat);
         if (defaultReadOnly != null) {
-          datasource.setDefaultReadOnly(defaultReadOnly);
+            datasource.setDefaultReadOnly(defaultReadOnly);
         }
         try {
-          datasource.setFilters(filters);
+            datasource.setFilters(filters);
         } catch (SQLException e) {
-          logger.error("注入druid filters异常!", e);
+            logger.error("注入druid filters异常!", e);
         }
         
         P6DataSource p6DataSource = new P6DataSource(datasource);

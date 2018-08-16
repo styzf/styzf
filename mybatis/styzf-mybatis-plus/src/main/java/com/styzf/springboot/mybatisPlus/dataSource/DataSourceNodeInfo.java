@@ -1,5 +1,11 @@
 package com.styzf.springboot.mybatisPlus.dataSource;
 
+/**
+ * 配置数据节点信息类
+ * @author styzf
+ * @date 2018年8月1日 
+ *
+ */
 public class DataSourceNodeInfo {
 	private String name;
 	

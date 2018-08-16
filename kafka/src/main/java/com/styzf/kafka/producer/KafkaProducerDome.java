@@ -5,6 +5,8 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class KafkaProducerDome extends Thread{
 
@@ -30,8 +32,8 @@ public class KafkaProducerDome extends Thread{
     @Override
     public void run() {
         int num = 0;
-        while (num < 50) {
-            String msg = "msg_" + num;
+        while (num < 200) {
+            String msg = "msg_test" + num;
             producer.send(new ProducerRecord<Integer, String>(topic, msg));
             System.out.println("begin send msg:" + msg);
             num ++;
@@ -44,6 +46,6 @@ public class KafkaProducerDome extends Thread{
     }
     
     public static void main(String[] args) {
-        new KafkaProducerDome("test1").start();
+        new KafkaProducerDome("test").start();
     }
 }

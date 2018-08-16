@@ -3,6 +3,7 @@ package com.styzf.core.web.advice;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ValidationException;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.styzf.core.common.config.LocaleMessageSource;
 import com.styzf.core.common.exception.StyzfException;
 import com.styzf.core.common.response.ErrorResponseData;
+import com.styzf.core.common.util.Assert;
 import com.styzf.core.common.util.TraceContext;
 
 /**
@@ -36,7 +38,6 @@ public class ExceptionHandlerAdvice {
     @Autowired
     private LocaleMessageSource localeMessageSource;
     
-   
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({RuntimeException.class})
     @ResponseBody
@@ -61,6 +62,38 @@ public class ExceptionHandlerAdvice {
         if ((ex instanceof StyzfException)) {
             traceId = TraceContext.getTraceId() + "";
             ipAddress = null != TraceContext.getSpans() ? StringUtils.join(TraceContext.getSpans().toArray()) : null;
+        }
+        ErrorResponseData data = new ErrorResponseData();
+        data.setErrorCode(errorCode);
+        data.setMsg(msg);
+        data.setStackMsg(ExceptionUtils.getFullStackTrace(ex));
+        data.setTraceId(traceId);
+        data.setProviderIpAddress(ipAddress);
+        return data;
+    }
+    
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler({ValidationException.class})
+    @ResponseBody
+    public ErrorResponseData handleBadRequest(HttpServletRequest req, ValidationException ex) {
+        Throwable cause = ex.getCause();
+        String errorCode = null;
+        String msg = null;
+        String traceId = null;
+        String ipAddress = null;
+        if (cause instanceof StyzfException) {
+            StyzfException exception = (StyzfException) cause;
+            errorCode = exception.getErrorKey();
+            msg = exception.getErrorMsg();
+            traceId = null;
+            ipAddress = null;
+        }
+        if (StringUtils.isEmpty(msg)) {
+            try {
+                msg = localeMessageSource.getMessage("styzf.system.error");
+            } catch (Exception e) {
+                msg = "系统内部错误,请联系管理员";
+            }
         }
         ErrorResponseData data = new ErrorResponseData();
         data.setErrorCode(errorCode);

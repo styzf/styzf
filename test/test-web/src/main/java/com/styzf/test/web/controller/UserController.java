@@ -14,8 +14,12 @@ import com.styzf.test.dto.UserDto;
 import com.styzf.test.service.IUserReadOnlyService;
 import com.styzf.test.service.IUserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping(value = "/userController")
+@Api(value = "测试")
 public class UserController {
     
     @Autowired
@@ -24,6 +28,7 @@ public class UserController {
     @Autowired
     private IUserReadOnlyService userReadOnlyService;
     
+    @ApiOperation(value = "测试", notes = "测试1")
     @RequestMapping(value = "hello", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public List<UserDto> hello() {

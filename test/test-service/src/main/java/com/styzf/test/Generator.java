@@ -10,8 +10,8 @@ import com.styzf.springboot.mybatisPlus.generator.MpGenerator;
  */
 public class Generator {
     public static void main(String[] args) {
-        MpGenerator.generator("E:\\dome\\test\\test-service\\generator", 
+        MpGenerator.generatorMySQL("E:\\dome\\test\\test-service\\generator", 
                 "jdbc:mysql://192.168.114.129:3306/styzf_test", "root", "root",
-                "com.styzf", "test", null, null);
+                "com.styzf", "test");
     }
 }

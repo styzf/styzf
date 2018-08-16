@@ -1,12 +1,13 @@
 package com.styzf.springboot.mybatisPlus.entity;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 
-public abstract class BaseEntity<T extends Model> extends Model<T> {
+public abstract class BaseEntity<T extends Model> extends Model<T> implements Serializable{
     /**
      * 创建人id
      */

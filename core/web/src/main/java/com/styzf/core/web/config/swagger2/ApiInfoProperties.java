@@ -2,7 +2,7 @@ package com.styzf.core.web.config.swagger2;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix="styzf.apiInfo")
+@ConfigurationProperties(prefix="styzf.api-info")
 public class ApiInfoProperties {
     private String version;
     private String title;

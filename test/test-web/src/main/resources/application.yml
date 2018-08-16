@@ -8,10 +8,27 @@ styzf:
       owner: styzf
       application-version: 2.0
       consumer-version: styzf.2.0.0
-      port: 30001
+      port: 30002
       timeout: 50000
       retries: 0
-      
+    settings: 
+      notResponseAopUrl:
+         - /swagger-resources/configuration/ui
+         - /swagger-resources
+         - /v2/api-docs
+         - /swagger-resources/configuration/security
+  apiInfo:
+    title: STYZF-TEST REST API
+    description: STYZF测试项目 REST API
+    version: 2.0.0
+    termsOfServiceUrl: 
+    contact: 
+         name: styzf
+         url:  
+         email: 
+    license: 
+    licenseUrl: 
+    pathsRegex: ^.*(?<!error)$    
 
 spring:
   mvc:
@@ -20,7 +37,7 @@ spring:
 #      suffix: .jsp
 
 server:
-    port: 9494
+    port: 60094
     session:
         timeout: 30
     context-path: /styzf-test

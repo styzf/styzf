@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 @ImportResource(locations={"classpath:styzf-test-web-dubbo.xml"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan(basePackages = { "com.styzf.test" , "com.styzf.core.common" })
+@ComponentScan(basePackages = { "com.styzf"})
 @EnableCaching
 @EnableAsync
 @SpringBootApplication

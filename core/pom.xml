@@ -12,6 +12,7 @@
   <modules>
   	<module>common</module>
   	<module>web</module>
+  	<module>log</module>
   </modules>
   <properties>
     <styzf-common.version>1.0.0-SNAPSHOT</styzf-common.version>

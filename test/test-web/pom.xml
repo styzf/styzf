@@ -8,21 +8,46 @@
   <artifactId>test-web</artifactId>
     <!-- 配置依赖关系 -->
     <dependencies>
+            <!-- 日志 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+           <groupId>com.styzf</groupId>
+           <artifactId>web</artifactId>
+           <exclusions>
+              <exclusion>
+                  <groupId>net.logstash.logback</groupId>
+                  <artifactId>logstash-logback-encoder</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-core</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-classic</artifactId>
+              </exclusion>
+           </exclusions>
+        </dependency>
         <dependency>
             <groupId>com.styzf</groupId>
             <artifactId>test-api</artifactId>
-        </dependency>
-        <!-- 配置Web启动器 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <!-- 排除依赖的jar包，该jar包与dubbo的冲突 -->
             <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>log4j-over-slf4j</artifactId>
-                </exclusion>
-            </exclusions>
+              <exclusion>
+                  <groupId>net.logstash.logback</groupId>
+                  <artifactId>logstash-logback-encoder</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-core</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-classic</artifactId>
+              </exclusion>
+           </exclusions>
         </dependency>
         <!-- 配置servlet-api、jsp-api、el-api依赖(jsp视图) -->
        <dependency>
