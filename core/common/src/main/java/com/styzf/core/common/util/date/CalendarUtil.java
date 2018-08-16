@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <b>描述</b>: 日历转换工具类：阴历和阳历日期互换(阴历日期范围19000101~20491229)<br>
@@ -14,7 +15,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class CalendarUtil {
-	private static final Logger logger = Logger.getLogger(CalendarUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(CalendarUtil.class);
 	
 	// 计算阴历日期参照1900年到2049年
 	private final static int[] LUNAR_INFO = { 0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0,
