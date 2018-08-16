@@ -2,9 +2,27 @@ package com.styzf.core.common.dto;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.Date;
 
 public class BaseDto implements Serializable{
     private static final long serialVersionUID = -4083754097244748607L;
+    
+    /**
+     * 创建人id
+     */
+    private String styzfCreatorId;
+    /**
+     * 创建时间
+     */
+    private Date styzfCreateTime;
+    /**
+     * 最后更新人
+     */
+    private String styzfLastUpdateId;
+    /**
+     * 最后更新时间
+     */
+    private Date styzfLastUpdateTime;
     
     public String toString() {
         StringBuffer sb = new StringBuffer();
