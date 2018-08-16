@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      				  http://www.springframework.org/schema/beans/spring-beans.xsd
+      				  http://code.alibabatech.com/schema/dubbo 
+      				  http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+      				  http://www.springframework.org/schema/context
+      				  http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- 配置当前应用的名称 -->
+    <dubbo:application name="stzyf-test-web" owner="${styzf.config.dubbo.owner}" version="${styzf.config.dubbo.application-version}" />
+
+	<dubbo:provider timeout="${styzf.config.dubbo.timeout}" retries="${styzf.config.dubbo.retries}"></dubbo:provider>
+	<!-- zookeepper注册中心 发现服务地址  -->
+	<dubbo:registry id="stzyf-test-web-registry" protocol="zookeeper" address="${styzf.config.dubbo.zookeeper-address}" />
+
+    <dubbo:reference id="styzfUserService" interface="com.styzf.sso.service.IStyzfUserService"
+                     version="${styzf.config.dubbo.consumer-version}" registry="stzyf-test-web-registry" />
+
+</beans>

@@ -1,0 +1,187 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+      <groupId>com.styzf</groupId>
+      <artifactId>sso</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>sso-service</artifactId>
+  
+    <dependencies>
+      <dependency>
+	  <groupId>com.styzf</groupId>
+	  <artifactId>sso-api</artifactId>
+	</dependency>
+      <dependency>
+         <groupId>com.styzf</groupId>
+         <artifactId>kafka</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>com.styzf</groupId>
+         <artifactId>styzf-mybatis-plus</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+          <!-- 排除依赖的jar包，该jar包与dubbo的冲突 -->
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>log4j-over-slf4j</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-juli</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <!-- 单元测试 -->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+      </dependency>
+      <!-- servlet-api、jsp-api、el-api -->
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-jsp-api</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <!-- jstl -->
+      <dependency>
+          <groupId>jstl</groupId>
+          <artifactId>jstl</artifactId>
+      </dependency>
+      <!-- Spring4 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context-support</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-aop</artifactId>
+      </dependency>   
+          
+      <!-- MyBatis3 -->
+      <dependency>
+          <groupId>org.mybatis.spring.boot</groupId>
+          <artifactId>mybatis-spring-boot-starter</artifactId>
+      </dependency>
+      <!-- 分页插件 -->
+      <dependency>
+          <groupId>com.github.pagehelper</groupId>
+          <artifactId>pagehelper</artifactId>
+      </dependency>
+      <!-- MySql -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <scope>runtime</scope>
+      </dependency>
+      <!-- 日志 -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+      </dependency>
+      <!-- Jackson JSON处理工具包 -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+      </dependency>
+      <!-- apache工具组件 -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-io</artifactId>
+      </dependency>
+      <!-- dubbo相关 -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>dubbo</artifactId>
+          <exclusions>
+              <!-- 排除spring的jar包依赖 -->
+              <exclusion>
+                  <groupId>org.springframework</groupId>
+                  <artifactId>spring</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      <!-- zookeeper分布式协调服务 -->
+      <dependency>
+          <groupId>org.apache.zookeeper</groupId>
+          <artifactId>zookeeper</artifactId>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-api</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>log4j</groupId>
+                  <artifactId>log4j</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>jline</groupId>
+                  <artifactId>jline</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      <!-- zkclient(zookeeper客户端) -->
+      <dependency>
+          <groupId>com.github.sgroschupf</groupId>
+          <artifactId>zkclient</artifactId>
+      </dependency>
+      <!-- Redis客户端 -->
+      <dependency>
+          <groupId>redis.clients</groupId>
+          <artifactId>jedis</artifactId>
+      </dependency>
+      <!-- 加密解密 -->
+      <dependency>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+      </dependency>
+      <!-- 日志 -->
+      <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+      </dependency>
+      <dependency>  
+        <groupId>org.aspectj</groupId>  
+        <artifactId>aspectjrt</artifactId>  
+      </dependency>  
+      <dependency>  
+        <groupId>org.aspectj</groupId>  
+        <artifactId>aspectjweaver</artifactId>  
+      </dependency> 
+    </dependencies>
+    
+    <build>
+       <resources>
+           <resource>
+               <directory>src/main/java</directory>
+               <includes>
+                   <include>**/*.xml</include>
+               </includes>
+           </resource>
+           <resource>
+               <directory>src/main/resources</directory>
+           </resource>
+       </resources>
+    </build>
+</project>

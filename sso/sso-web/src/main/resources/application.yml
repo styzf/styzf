@@ -1,0 +1,74 @@
+logging:
+  level: 
+    com.styzf: info
+
+styzf:
+  dateConverter:
+    date-format:
+       yyyy-MM-dd;yyyy-MM-dd-HH:mm:ss
+  config:
+    dubbo:
+      zookeeper-address: 192.168.114.129:2181,192.168.114.130:2181,192.168.114.131:2181
+      owner: styzf
+      application-version: 2.0
+      consumer-version: styzf.2.0.0
+      port: 30022
+      timeout: 50000
+      retries: 0
+    settings: 
+      notResponseAopUrl:
+         - /swagger-resources/configuration/ui
+         - /swagger-resources
+         - /v2/api-docs
+         - /swagger-resources/configuration/security
+# 2.0需要写成全小写 以 - 分割
+  api-info: 
+    title: STYZF-PROTAL REST API
+    description: STYZF门户 REST API
+    version: 2.0.0
+    termsOfServiceUrl: 
+    contact: 
+         name: styzf
+         url:  
+         email: 
+    license: 
+    licenseUrl: 
+    pathsRegex: ^.*(?<!error)$    
+
+spring:
+  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+#  redis: 
+#    master:
+#      styzf-protal
+#    host:
+#      192.168.114.129
+#    port:
+#      6379
+#    password:
+#      styzf123456
+  redis: 
+    cluster: 
+      nodes:
+        - 192.168.114.129:8000        
+        - 192.168.114.129:8001        
+        - 192.168.114.130:8002        
+        - 192.168.114.130:8003        
+        - 192.168.114.131:8004        
+        - 192.168.114.131:8005        
+      password:
+        styzf123456
+  messages:
+    basename: i18n/messages
+        
+server:
+    port: 60001
+    servlet:
+      context-path: /styzf-sso
+      session:
+        timeout: 30
+    tomcat:
+        uri-encoding: UTF-8
+  

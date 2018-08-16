@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.styzf.sso.mapper.StyzfUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.styzf.sso.entity.StyzfUser">
+        <id column="st_id" property="stId" />
+        <result column="st_uid" property="stUid" />
+        <result column="st_name" property="stName" />
+        <result column="st_password" property="stPassword" />
+        <result column="st_phone" property="stPhone" />
+        <result column="st_email" property="stEmail" />
+        <result column="st_qq" property="stQq" />
+        <result column="st_we_chat" property="stWeChat" />
+        <result column="st_role" property="stRole" />
+        <result column="st_vip" property="stVip" />
+        <result column="st_score" property="stScore" />
+        <result column="attribute1" property="attribute1" />
+        <result column="attribute2" property="attribute2" />
+        <result column="attribute3" property="attribute3" />
+        <result column="attribute4" property="attribute4" />
+        <result column="attribute5" property="attribute5" />
+        <result column="styzf_creator_id" property="styzfCreatorId" />
+        <result column="styzf_create_time" property="styzfCreateTime" />
+        <result column="styzf_last_update_id" property="styzfLastUpdateId" />
+        <result column="styzf_last_update_time" property="styzfLastUpdateTime" />
+    </resultMap>
+
+</mapper>

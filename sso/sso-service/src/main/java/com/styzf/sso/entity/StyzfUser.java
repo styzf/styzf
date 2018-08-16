@@ -1,0 +1,233 @@
+package com.styzf.sso.entity;
+
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.styzf.springboot.mybatisPlus.entity.BaseEntity;
+
+/**
+ * <p>
+ * 用户主表
+ * </p>
+ *
+ * @author styzf
+ * @since 2018-08-14
+ */
+@TableName("styzf_user")
+public class StyzfUser extends BaseEntity<StyzfUser> {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键id
+     */
+    @TableId("st_id")
+    private String stId;
+    /**
+     * 用户id
+     */
+    @TableField("st_uid")
+    private String stUid;
+    /**
+     * 用户名
+     */
+    @TableField("st_name")
+    private String stName;
+    /**
+     * 用户密码
+     */
+    @TableField("st_password")
+    private String stPassword;
+    /**
+     * 用户电话
+     */
+    @TableField("st_phone")
+    private String stPhone;
+    /**
+     * 用户邮件
+     */
+    @TableField("st_email")
+    private String stEmail;
+    /**
+     * 用户qq
+     */
+    @TableField("st_qq")
+    private String stQQ;
+    /**
+     * 用户微信
+     */
+    @TableField("st_we_chat")
+    private String stWeChat;
+    /**
+     * 用户角色
+     */
+    @TableField("st_role")
+    private String stRole;
+    /**
+     * 用户vip
+     */
+    @TableField("st_vip")
+    private Integer stVip;
+    /**
+     * 用户积分
+     */
+    @TableField("st_score")
+    private Integer stScore;
+    /**
+     * 备用字段
+     */
+    private String attribute1;
+    /**
+     * 备用字段
+     */
+    private String attribute2;
+    /**
+     * 备用字段
+     */
+    private String attribute3;
+    /**
+     * 备用字段
+     */
+    private String attribute4;
+    /**
+     * 备用字段
+     */
+    private String attribute5;
+
+
+    public String getStId() {
+        return stId;
+    }
+
+    public void setStId(String stId) {
+        this.stId = stId;
+    }
+
+    public String getStUid() {
+        return stUid;
+    }
+
+    public void setStUid(String stUid) {
+        this.stUid = stUid;
+    }
+
+    public String getStName() {
+        return stName;
+    }
+
+    public void setStName(String stName) {
+        this.stName = stName;
+    }
+
+    public String getStPassword() {
+        return stPassword;
+    }
+
+    public void setStPassword(String stPassword) {
+        this.stPassword = stPassword;
+    }
+
+    public String getStPhone() {
+        return stPhone;
+    }
+
+    public void setStPhone(String stPhone) {
+        this.stPhone = stPhone;
+    }
+
+    public String getStEmail() {
+        return stEmail;
+    }
+
+    public void setStEmail(String stEmail) {
+        this.stEmail = stEmail;
+    }
+
+    public String getStQQ() {
+        return stQQ;
+    }
+
+    public void setStQQ(String stQQ) {
+        this.stQQ = stQQ;
+    }
+
+    public String getStWeChat() {
+        return stWeChat;
+    }
+
+    public void setStWeChat(String stWeChat) {
+        this.stWeChat = stWeChat;
+    }
+
+    public String getStRole() {
+        return stRole;
+    }
+
+    public void setStRole(String stRole) {
+        this.stRole = stRole;
+    }
+
+    public Integer getStVip() {
+        return stVip;
+    }
+
+    public void setStVip(Integer stVip) {
+        this.stVip = stVip;
+    }
+
+    public Integer getStScore() {
+        return stScore;
+    }
+
+    public void setStScore(Integer stScore) {
+        this.stScore = stScore;
+    }
+
+    public String getAttribute1() {
+        return attribute1;
+    }
+
+    public void setAttribute1(String attribute1) {
+        this.attribute1 = attribute1;
+    }
+
+    public String getAttribute2() {
+        return attribute2;
+    }
+
+    public void setAttribute2(String attribute2) {
+        this.attribute2 = attribute2;
+    }
+
+    public String getAttribute3() {
+        return attribute3;
+    }
+
+    public void setAttribute3(String attribute3) {
+        this.attribute3 = attribute3;
+    }
+
+    public String getAttribute4() {
+        return attribute4;
+    }
+
+    public void setAttribute4(String attribute4) {
+        this.attribute4 = attribute4;
+    }
+
+    public String getAttribute5() {
+        return attribute5;
+    }
+
+    public void setAttribute5(String attribute5) {
+        this.attribute5 = attribute5;
+    }
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.stId;
+    }
+}

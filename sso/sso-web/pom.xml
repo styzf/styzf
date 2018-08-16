@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.styzf</groupId>
+    <artifactId>sso</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>sso-web</artifactId>
+  
+  <dependencies>
+    <!-- Spring Boot提供了一种在启动时分析应用程序环境和打印诊断的方法,完成迁移后，请确保从项目的依赖项中删除此模块。 -->
+    <dependency> 
+        <groupId>org.springframework.boot</groupId> 
+        <artifactId>spring-boot-properties-migrator</artifactId> 
+        <scope>runtime</scope> 
+    </dependency>
+    <dependency>
+      <groupId>com.styzf</groupId>
+      <artifactId>sso-api</artifactId>
+    </dependency>
+    <!-- 日志 -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>com.styzf</groupId>
+       <artifactId>web</artifactId>
+       <exclusions>
+          <exclusion>
+              <groupId>net.logstash.logback</groupId>
+              <artifactId>logstash-logback-encoder</artifactId>
+          </exclusion>
+          <exclusion>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-core</artifactId>
+          </exclusion>
+          <exclusion>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-classic</artifactId>
+          </exclusion>
+       </exclusions>
+    </dependency>
+    <!-- 配置servlet-api、jsp-api、el-api依赖(jsp视图) -->
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <!-- 配置tomcat-juli(我们使用tomcat7) -->
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-juli</artifactId>
+    </dependency>
+    <!-- 配置tomcat启动器(tomcat容器相关jar不打到war包中) -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <!-- 配置jstl依赖 -->
+    <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+    </dependency>
+    <!-- dubbo -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+    </dependency>
+    <!-- zookeeper分布式协调服务 -->
+    <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+    </dependency>
+    <!-- zkclient(zookeeper客户端) -->
+    <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>commons-lang</groupId>
+       <artifactId>commons-lang</artifactId>
+    </dependency>
+    <dependency>  
+      <groupId>org.aspectj</groupId>  
+      <artifactId>aspectjrt</artifactId>  
+    </dependency>  
+    <dependency>  
+      <groupId>org.aspectj</groupId>  
+      <artifactId>aspectjweaver</artifactId>  
+    </dependency> 
+  </dependencies>
+</project>
