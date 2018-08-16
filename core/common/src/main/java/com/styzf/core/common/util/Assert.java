@@ -1,5 +1,6 @@
 package com.styzf.core.common.util;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Map;
 import org.apache.commons.lang.StringUtils;
@@ -14,7 +15,7 @@ public class Assert extends org.springframework.util.Assert {
       throw new StyzfException("styzf.system.error");
     }
     
-    private static String getLocaleMsg(String errorKey, Object[] params) {
+    public static String getLocaleMsg(String errorKey, Object[] params) {
       LocaleMessageSource localeMessageSource = (LocaleMessageSource)SpringBeanUtil.getBean(LocaleMessageSource.class);
       String msg = "";
       try {
@@ -35,6 +36,14 @@ public class Assert extends org.springframework.util.Assert {
     
     public static void throwException(String errorKey, Object[] params) {
       throw new StyzfException(errorKey, getLocaleMsg(errorKey, params));
+    }
+
+    public static void throwException(String errorKey, String errorMsg) {
+        throw new StyzfException(errorKey, errorMsg);
+    }
+
+    public static void throwException(String errorKey, String errorMsg, Object[] params) {
+        throw new StyzfException(errorKey, MessageFormat.format(errorMsg, params));
     }
     
     public static void throwException(String errorKey, Object[] params, Throwable cause) {
