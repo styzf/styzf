@@ -1,4 +1,4 @@
-package com.styzf.core.common.dto;
+package com.styzf.core.common.base;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -24,6 +24,38 @@ public class BaseDto implements Serializable{
      */
     private Date styzfLastUpdateTime;
     
+    public String getStyzfCreatorId() {
+        return styzfCreatorId;
+    }
+
+    public void setStyzfCreatorId(String styzfCreatorId) {
+        this.styzfCreatorId = styzfCreatorId;
+    }
+
+    public Date getStyzfCreateTime() {
+        return styzfCreateTime;
+    }
+
+    public void setStyzfCreateTime(Date styzfCreateTime) {
+        this.styzfCreateTime = styzfCreateTime;
+    }
+
+    public String getStyzfLastUpdateId() {
+        return styzfLastUpdateId;
+    }
+
+    public void setStyzfLastUpdateId(String styzfLastUpdateId) {
+        this.styzfLastUpdateId = styzfLastUpdateId;
+    }
+
+    public Date getStyzfLastUpdateTime() {
+        return styzfLastUpdateTime;
+    }
+
+    public void setStyzfLastUpdateTime(Date styzfLastUpdateTime) {
+        this.styzfLastUpdateTime = styzfLastUpdateTime;
+    }
+
     public String toString() {
         StringBuffer sb = new StringBuffer();
         Class<?> clazz = getClass();

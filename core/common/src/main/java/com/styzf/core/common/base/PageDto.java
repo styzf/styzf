@@ -1,4 +1,4 @@
-package com.styzf.core.common.dto;
+package com.styzf.core.common.base;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,19 +18,19 @@ public class PageDto<T extends BaseDto> implements Serializable {
      */
     private static final long serialVersionUID = 1311785060751428298L;
 
-    int page = 1;
+    private int page = 1;
     
-    int pageSize = 10;
+    private int pageSize = 10;
     
-    long rowCount;
+    private long rowCount;
     
-    List<T> list;
+    private List<T> list;
     
-    String orderBy;
+    private String orderBy;
 
-    boolean isAscSort = true;
+    private boolean ascSort = true;
     
-    T dto;
+    private T dto;
     
     public int getPage() {
         return page;
@@ -73,11 +73,11 @@ public class PageDto<T extends BaseDto> implements Serializable {
     }
     
     public boolean isAscSort() {
-        return isAscSort;
+        return ascSort;
     }
     
     public void setAscSort(boolean isAscSort) {
-        this.isAscSort = isAscSort;
+        this.ascSort = isAscSort;
     }
     
     public T getDto() {

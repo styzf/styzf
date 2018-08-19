@@ -32,6 +32,20 @@ public interface CommonConstant {
 
     public static final String UNDER_LINE = "_";
     
+    public interface ROLE {
+        public static final String ADMIN = "admin";
+        public static final String VIP0 = "VIP0";
+        public static final String VIP1 = "VIP1";
+        public static final String VIP2 = "VIP2";
+        public static final String VIP3 = "VIP3";
+        public static final String VIP4 = "VIP4";
+        public static final String VIP5 = "VIP5";
+        public static final String VIP6 = "VIP6";
+        public static final String VIP7 = "VIP7";
+        public static final String VIP8 = "VIP8";
+        public static final String VIP9 = "VIP9";
+    }
+    
     public interface LANG {
 
         public static final String ZH = "zh-CN";
