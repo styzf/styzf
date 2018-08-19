@@ -2,9 +2,11 @@ package com.styzf.sso.aspect.validated;
 
 import java.util.stream.IntStream;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.velocity.app.event.ReferenceInsertionEventHandler.referenceInsertExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -13,15 +15,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.styzf.core.common.redis.RedisUtil;
 import com.styzf.core.common.util.Assert;
 import com.styzf.core.common.validation.RegEx;
+import com.styzf.sso.constant.SSOConstant;
 import com.styzf.sso.dto.UserDto;
+import com.styzf.sso.util.CookieUtils;
 
 /**
- * 验证统一处理
+ * <p>
+ *  统一验证处理
+ * </p>
+ * 
  * @author styzf
- * @date 2018年7月24日 
- *
+ * @date 2018年8月17日 
+ * @since 1.0.0 
  */
 @Aspect
 @Component
@@ -29,7 +37,10 @@ public class ValidatedAspect {
     protected static final Logger logger = LoggerFactory.getLogger(ValidatedAspect.class);
     
     @Autowired  
-    HttpServletRequest request;
+    private HttpServletRequest request;
+    
+    @Autowired
+    private RedisUtil redisUtil;
     
     /**
      * 注册验证
@@ -45,7 +56,6 @@ public class ValidatedAspect {
         IntStream.range(0, args.length).parallel().forEach(index -> {
             Object para = args[index];
             if (para instanceof UserDto) {
-                
                 UserDto userDto = (UserDto) para;
                 String stPhone = userDto.getStPhone();
                 String stPassword = userDto.getStPassword();
@@ -63,6 +73,15 @@ public class ValidatedAspect {
                 }
                 if (StringUtils.isBlank(code)) {
                     Assert.throwException("errorKey.30003");
+                }
+                Cookie cookie = CookieUtils.getCookie(request, SSOConstant.Common.TOKEN);
+                if (cookie == null) {
+                    Assert.throwException("errorKey.30004");
+                } 
+                String token = cookie.getValue();
+                String codeData =redisUtil.get(SSOConstant.Redis.SSO_SECURITY_CODE_PREFIX + token);
+                if (! code.equalsIgnoreCase(codeData)) {
+                    Assert.throwException("errorKey.30005");
                 }
             }
         });

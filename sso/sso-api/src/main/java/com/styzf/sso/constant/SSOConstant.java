@@ -6,4 +6,8 @@ public interface SSOConstant {
         
         public static String ANONYMOUS_USER = "匿名用户";
     }
+    
+    public interface Redis {
+        public static String SSO_SECURITY_CODE_PREFIX = "sso:securityCode:";
+    }
 }

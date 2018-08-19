@@ -116,6 +116,11 @@
 	            <artifactId>common</artifactId>
 	            <version>${styzf-core.version}</version>
 	        </dependency>
+	        <dependency>
+	            <groupId>com.baomidou</groupId>
+	            <artifactId>mybatis-plus-support</artifactId>
+	            <version>${mybatis-plus.version}</version>
+	        </dependency>
 		    <dependency>
 	            <groupId>org.hibernate</groupId>
 	            <artifactId>hibernate-validator</artifactId>

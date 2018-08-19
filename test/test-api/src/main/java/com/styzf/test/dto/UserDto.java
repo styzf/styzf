@@ -2,7 +2,7 @@ package com.styzf.test.dto;
 
 import java.util.Date;
 
-import com.styzf.core.common.dto.BaseDto;
+import com.styzf.core.common.base.BaseDto;
 
 public class UserDto extends BaseDto{
 

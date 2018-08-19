@@ -1,5 +1,6 @@
 package com.styzf.sso.service;
 
+import com.styzf.core.common.base.BaseService;
 import com.styzf.sso.dto.UserDto;
 
 /**
@@ -11,6 +12,6 @@ import com.styzf.sso.dto.UserDto;
  * @param <T>
  * @since 2018-08-14
  */
-public interface IStyzfUserService {
+public interface IStyzfUserService extends BaseService<UserDto>{
     public Boolean register(UserDto userDto);
 }

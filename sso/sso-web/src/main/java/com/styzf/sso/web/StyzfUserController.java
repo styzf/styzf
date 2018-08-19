@@ -1,5 +1,7 @@
 package com.styzf.sso.web;
 
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.styzf.core.common.constant.CommonConstant;
 import com.styzf.core.common.redis.RedisUtil;
 import com.styzf.core.common.util.IdWorker;
 import com.styzf.sso.aspect.validated.annotation.RegisterValidated;
@@ -44,9 +47,27 @@ public class StyzfUserController {
     @RegisterValidated
     @RequestMapping("register")
     public Boolean register(UserDto userDto) {
-        return styzfUserService.register(userDto);
+        Date today = new Date();
+        userDto.setStRole(CommonConstant.ROLE.VIP0);
+        userDto.setStyzfCreatorId(CommonConstant.ROLE.ADMIN);
+        userDto.setStyzfCreateTime(today);
+        userDto.setStyzfLastUpdateId(CommonConstant.ROLE.ADMIN);
+        userDto.setStyzfLastUpdateTime(today);
+        Boolean register = styzfUserService.register(userDto);
+        if (register) {
+            return register;
+        }
+        
+        return register;
     }
- 
+    
+    @ApiOperation(value = "登陆login", notes = "登陆login")
+    @RegisterValidated
+    @RequestMapping("login")
+    public Boolean login(UserDto userDto) {
+        return Boolean.FALSE;
+    }
+    
     @ApiOperation(value = "验证是否登录：匿名登录和未登录返回false", notes = "验证是否登录")
     @RegisterValidated
     @RequestMapping("checkLogin")

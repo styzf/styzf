@@ -17,7 +17,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * 
  * @author styzf
  * @date 2018年7月23日 
- *
+ * @since 1.0.0
  */
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
