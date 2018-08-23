@@ -13,9 +13,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
-
-public class StringUtil extends StringUtils {
+public class StringUtils extends org.apache.commons.lang3.StringUtils {
     private static final String[] hex = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B", "0C",
             "0D", "0E", "0F", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "1A", "1B", "1C", "1D", "1E",
             "1F", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "2A", "2B", "2C", "2D", "2E", "2F", "30",
@@ -393,11 +391,14 @@ public class StringUtil extends StringUtils {
     }
     
     /**
-     * 驼峰转下划线
-     *  testTest -> test_test
-     *  TestTest -> test_test
-     *  TESTTest -> test_test
-     *  TestTEST -> test_test
+     * <p>驼峰转下划线</p>
+     * 
+     * <pre>
+     * StringUtils.upperCharToUnderLine("testTest") = test_test
+     * StringUtils.upperCharToUnderLine("TestTest") = test_test
+     * StringUtils.upperCharToUnderLine("TestTest") = test_test
+     * StringUtils.upperCharToUnderLine("TestTEST") = test_test
+     * </pre>
      *  
      * @author styzf
      * @date 2018年8月23日 
