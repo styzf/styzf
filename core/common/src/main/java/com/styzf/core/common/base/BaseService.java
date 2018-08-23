@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface BaseService<D extends BaseDto> {
+public interface BaseService<D extends BaseDTO> {
 
     /**
      * <p>
@@ -236,5 +236,15 @@ public interface BaseService<D extends BaseDto> {
      * @param page 翻页对象
      * @return
      */
-    PageDto<D> baseSelectPage(PageDto<D> page);
+    PageDTO<D> baseSelectPage(PageDTO<D> page);
+    
+    /**
+     * <p>
+     * 条件翻页查询
+     * </p>
+     *
+     * @param page 翻页对象
+     * @return
+     */
+    PageDTO<D> baseSelectPageByWrapper(PageDTO<D> page);
 }
