@@ -182,7 +182,7 @@ public class BaseServiceImpl<T, D extends BaseDTO, M extends BaseMapper<T>> exte
                 if (object != null) {
                     String name = field.getName();
                     // 这里需要格式化字段名为对应的数据库字段名
-                    name = StringUtils.upperCharToUnderLine(name);
+                    name = StringUtils.camelToUnderline(name);
                     wrapper.eq(name, object);
                 }
             } catch (Exception e) {
