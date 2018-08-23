@@ -10,7 +10,7 @@ import java.util.List;
  * 
  * @param <T>
  */
-public class PageDto<T extends BaseDto> implements Serializable {
+public class PageDTO<T extends BaseDTO> implements Serializable {
     /**
      * @author styzf
      * @date 2018年7月23日 

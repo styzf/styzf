@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Date;
 
-public class BaseDto implements Serializable{
+public class BaseDTO implements Serializable{
     private static final long serialVersionUID = -4083754097244748607L;
     
     /**
