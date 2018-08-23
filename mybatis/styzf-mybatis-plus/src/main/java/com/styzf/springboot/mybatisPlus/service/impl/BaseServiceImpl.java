@@ -1,6 +1,7 @@
 package com.styzf.springboot.mybatisPlus.service.impl;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
@@ -8,15 +9,19 @@ import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.styzf.core.common.base.BaseDto;
+import com.styzf.core.common.base.BaseDTO;
 import com.styzf.core.common.base.BaseService;
-import com.styzf.core.common.base.PageDto;
+import com.styzf.core.common.base.PageDTO;
+import com.styzf.core.common.util.Assert;
 import com.styzf.core.common.util.OrikaUtil;
+import com.styzf.core.common.util.StringUtils;
 import com.styzf.springboot.mybatisPlus.util.PageUtil;
 
-public class BaseServiceImpl<T, D extends BaseDto, M extends BaseMapper<T>> extends ServiceImpl<M, T> implements BaseService<D>{
+public class BaseServiceImpl<T, D extends BaseDTO, M extends BaseMapper<T>> extends ServiceImpl<M, T> implements BaseService<D>{
     
     protected Class<T> clazzT;
     protected Class<D> clazzD;
@@ -158,10 +163,34 @@ public class BaseServiceImpl<T, D extends BaseDto, M extends BaseMapper<T>> exte
     }
 
     @Override
-    public PageDto<D> baseSelectPage(PageDto<D> pageDto) {
+    public PageDTO<D> baseSelectPage(PageDTO<D> pageDto) {
         Page<T> page = super.selectPage(
                 new Page<>(pageDto.getPage(), pageDto.getPageSize(), pageDto.getOrderBy(), pageDto.isAscSort()));
         return PageUtil.mapPage(page, clazzD);
     }
-    
+
+    @Override
+    public PageDTO<D> baseSelectPageByWrapper(PageDTO<D> pageDTO) {
+        D dto = pageDTO.getDto();
+        Class<? extends BaseDTO> dtoClass = dto.getClass();
+        Field[] declaredFields = dtoClass.getDeclaredFields();
+        Wrapper<T> wrapper = new EntityWrapper<>();
+        for (Field field : declaredFields) {
+            field.setAccessible(true);
+            try {
+                Object object = field.get(dto);
+                if (object != null) {
+                    String name = field.getName();
+                    // 这里需要格式化字段名为对应的数据库字段名
+                    name = StringUtils.upperCharToUnderLine(name);
+                    wrapper.eq(name, object);
+                }
+            } catch (Exception e) {
+                Assert.throwException("com.styzf.springboot.mybatisPlus.service.impl.BaseServiceImpl.baseSelectPageByWrapper");
+            }
+        }
+        Page<T> page = new Page<>(pageDTO.getPage(), pageDTO.getPageSize(), pageDTO.getOrderBy(), pageDTO.isAscSort());
+        page = selectPage(page, wrapper);
+        return PageUtil.mapPage(page, clazzD);
+    };
 }
