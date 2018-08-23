@@ -386,7 +386,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     public static void main(String[] args) {
 //        String html = "<div asdf onclick='aa'  asdf onfolasdf='a' asdf>  ...  <script type=\"text/javascript\" ...>   ....   document.writeln(\"<h1>在JS代码里也可能会嵌套HTML标签等等，各种符合语法的嵌套</h1>\");     ....  </script>   .<p>ad</p>..   </div> ";
 //        System.out.println(clearScriptTag(html));
-        String upperCharToUnderLine = upperCharToUnderLine("TestTEST");
+        String upperCharToUnderLine = camelToUnderline("TestTEST");
         System.out.println(upperCharToUnderLine);
     }
     
@@ -394,10 +394,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      * <p>驼峰转下划线</p>
      * 
      * <pre>
-     * StringUtils.upperCharToUnderLine("testTest") = test_test
-     * StringUtils.upperCharToUnderLine("TestTest") = test_test
-     * StringUtils.upperCharToUnderLine("TestTest") = test_test
-     * StringUtils.upperCharToUnderLine("TestTEST") = test_test
+     * StringUtils.camelToUnderline("testTest") = test_test
+     * StringUtils.camelToUnderline("TestTest") = test_test
+     * StringUtils.camelToUnderline("TestTest") = test_test
+     * StringUtils.camelToUnderline("TestTEST") = test_test
      * </pre>
      *  
      * @author styzf
@@ -405,7 +405,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      * @param param
      * @return
      */
-    public static String upperCharToUnderLine(String param) {  
+    public static String camelToUnderline(String param) {  
         Pattern p1 = Pattern.compile("[A-Z]{2,}");
         Pattern p2 = Pattern.compile("[A-Z]");
         if(param == null || param.equals("")){  
