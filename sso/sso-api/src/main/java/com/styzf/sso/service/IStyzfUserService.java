@@ -13,5 +13,11 @@ import com.styzf.sso.dto.UserDto;
  * @since 2018-08-14
  */
 public interface IStyzfUserService extends BaseService<UserDto>{
+    /**
+     * 
+     * @author styzf
+     * @param userDto
+     * @return true注册成功，false注册失败
+     */
     public Boolean register(UserDto userDto);
 }

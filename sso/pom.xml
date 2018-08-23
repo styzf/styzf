@@ -15,7 +15,7 @@
   	<module>sso-web</module>
   </modules>
   
-    <properties>
+  <properties>
     <styzf-sso.version>1.0.0-SNAPSHOT</styzf-sso.version>
     <styzf-mybatis-plus.version>1.0.0-SNAPSHOT</styzf-mybatis-plus.version>
     <styzf-core-common.version>1.0.0-SNAPSHOT</styzf-core-common.version>

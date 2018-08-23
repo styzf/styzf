@@ -2,9 +2,9 @@ package com.styzf.test.dto;
 
 import java.util.Date;
 
-import com.styzf.core.common.base.BaseDto;
+import com.styzf.core.common.base.BaseDTO;
 
-public class UserDto extends BaseDto{
+public class UserDto extends BaseDTO{
 
     private static final long serialVersionUID = 5013081942424102121L;
 

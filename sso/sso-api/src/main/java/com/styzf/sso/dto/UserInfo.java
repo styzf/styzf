@@ -1,6 +1,6 @@
 package com.styzf.sso.dto;
 
-import com.styzf.core.common.base.BaseDto;
+import com.styzf.core.common.base.BaseDTO;
 import com.styzf.core.common.validation.annotation.EMail;
 import com.styzf.core.common.validation.annotation.NotNull;
 import com.styzf.core.common.validation.annotation.Phone;
@@ -13,7 +13,7 @@ import com.styzf.core.common.validation.annotation.Phone;
  * @author styzf
  * @since 2018-08-14
  */
-public class UserInfo extends BaseDto {
+public class UserInfo extends BaseDTO {
 
     private static final long serialVersionUID = 1L;
 

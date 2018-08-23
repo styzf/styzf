@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.styzf.core.common.base.PageDTO;
 import com.styzf.core.common.constant.CommonConstant;
 import com.styzf.core.common.redis.RedisUtil;
 import com.styzf.core.common.util.IdWorker;
@@ -64,7 +65,8 @@ public class StyzfUserController {
     @ApiOperation(value = "登陆login", notes = "登陆login")
     @RegisterValidated
     @RequestMapping("login")
-    public Boolean login(UserDto userDto) {
+    public Boolean login(UserDto userDto, PageDTO<UserDto> page) {
+        PageDTO<UserDto> baseSelectPage = styzfUserService.baseSelectPage(page);
         return Boolean.FALSE;
     }
     
