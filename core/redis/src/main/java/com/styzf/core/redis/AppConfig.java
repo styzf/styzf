@@ -1,4 +1,4 @@
-package com.styzf.core.common.redis;
+package com.styzf.core.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -52,6 +52,7 @@ public class AppConfig {
 //    private RedisConfigurationProperties properties;
 //    
 //    @Bean("redisConnectionFactory")
+//    @SuppressWarnings("deprecation")
 //    public RedisConnectionFactory jedisConnectionFactory() {
 //        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
 //        jedisConnectionFactory.setHostName(properties.getHost());
@@ -59,9 +60,5 @@ public class AppConfig {
 //        jedisConnectionFactory.setPassword(properties.getPassword());
 //        return jedisConnectionFactory;
 //    }
-//    
-//    @Bean("stringRedisTemplate")
-//    public StringRedisTemplate stringRedisTemplate(@Qualifier("redisConnectionFactory") RedisConnectionFactory redisConnectionFactory) {
-//        return new StringRedisTemplate(redisConnectionFactory);
-//    }
+    
 }

@@ -1,4 +1,4 @@
-package com.styzf.core.common.redis;
+package com.styzf.core.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

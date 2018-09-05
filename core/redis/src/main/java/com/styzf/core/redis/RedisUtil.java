@@ -1,6 +1,5 @@
-package com.styzf.core.common.redis;
+package com.styzf.core.redis;
 
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
