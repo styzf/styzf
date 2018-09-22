@@ -1,9 +1,6 @@
 package com.styzf.sso.dto;
 
 import com.styzf.core.common.base.BaseDTO;
-import com.styzf.core.common.validation.annotation.EMail;
-import com.styzf.core.common.validation.annotation.NotNull;
-import com.styzf.core.common.validation.annotation.Phone;
 
 /**
  * <p>
