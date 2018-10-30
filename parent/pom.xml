@@ -540,7 +540,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
     <!-- 项目构建部分 -->
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -553,7 +552,18 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                 </plugin>
-            </plugins>
-        </pluginManagement>
+                        <!-- 打jar包插件 -->
+		        <plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-jar-plugin</artifactId>
+		            <version>3.0.2</version>
+		            <configuration>
+		                <excludes>
+		                    <exclude>**/*.properties</exclude>
+		                </excludes>
+		            </configuration>
+		        </plugin>
+      		</plugins>
+      </pluginManagement>
     </build>
 </project>
