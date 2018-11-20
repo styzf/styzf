@@ -22,9 +22,13 @@
 	  </dependency>
         <!-- FastDFS Client -->
         <dependency>
-            <groupId>net.oschina.zcx7878</groupId>
-            <artifactId>fastdfs-client-java</artifactId>
-            <version>${fastdfs-client.version}</version>
+            <groupId>org.csource</groupId>
+			<artifactId>fastdfs-client-java</artifactId>
+			<version>1.27-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+     	     <groupId>org.apache.commons</groupId>
+             <artifactId>commons-io</artifactId>
         </dependency>
   </dependencies>
 </project>

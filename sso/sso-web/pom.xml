@@ -25,6 +25,10 @@
     </dependency>
     <dependency>
        <groupId>com.styzf</groupId>
+       <artifactId>redis</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>com.styzf</groupId>
        <artifactId>web</artifactId>
        <exclusions>
           <exclusion>

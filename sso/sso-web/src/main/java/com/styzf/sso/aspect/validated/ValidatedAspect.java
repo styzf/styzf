@@ -15,9 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.styzf.core.common.redis.RedisUtil;
 import com.styzf.core.common.util.Assert;
-import com.styzf.core.common.validation.RegEx;
+import com.styzf.core.redis.RedisUtil;
 import com.styzf.sso.constant.SSOConstant;
 import com.styzf.sso.dto.UserDto;
 import com.styzf.sso.util.CookieUtils;
@@ -65,9 +64,9 @@ public class ValidatedAspect {
                             StringUtils.isBlank(code)) {
                     Assert.throwException("errorKey.30000");
                 }
-                if (StringUtils.isBlank(stPhone) || stPhone.matches(RegEx.Phone.getContext())) {
-                    Assert.throwException("errorKey.30001");
-                }
+//                if (StringUtils.isBlank(stPhone) || stPhone.matches(RegEx.Phone.getContext())) {
+//                    Assert.throwException("errorKey.30001");
+//                }
                 if (StringUtils.isBlank(stPassword)) {
                     Assert.throwException("errorKey.30002");
                 }
