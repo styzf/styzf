@@ -22,6 +22,7 @@
 	   <dependency>
 	       <groupId>com.styzf</groupId>
 	       <artifactId>common</artifactId>
+	       <version>${project.parent.version}</version>
 	   </dependency>
 	    <dependency>
 	        <groupId>org.aspectj</groupId>

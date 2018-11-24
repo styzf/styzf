@@ -61,11 +61,23 @@
         <kafka.version>1.1.0</kafka.version>
         <spring.integration.kafka.version>2.1.0.RELEASE</spring.integration.kafka.version>
         
+        <lombok.version>1.16.16</lombok.version>
+        <logstash.version>4.11</logstash.version>
     </properties>
     
     <!-- 依赖管理配置(用于锁定指定版本) -->
     <dependencyManagement>
-	    <dependencies>
+	    <dependencies> 
+	    	<dependency>
+		        <groupId>org.projectlombok</groupId>
+		        <artifactId>lombok</artifactId>
+		        <version>${lombok.version}</version>
+		    </dependency>
+ 		    <dependency>
+	            <groupId>net.logstash.logback</groupId>
+	            <artifactId>logstash-logback-encoder</artifactId>
+	            <version>${logstash.version}</version>
+	        </dependency>
 	        <dependency>
 	            <groupId>com.baomidou</groupId>
 	            <artifactId>mybatis-plus-support</artifactId>
