@@ -76,11 +76,6 @@
           <groupId>org.mybatis.spring.boot</groupId>
           <artifactId>mybatis-spring-boot-starter</artifactId>
       </dependency>
-      <!-- 分页插件 -->
-      <dependency>
-          <groupId>com.github.pagehelper</groupId>
-          <artifactId>pagehelper</artifactId>
-      </dependency>
       <!-- MySql -->
       <dependency>
           <groupId>mysql</groupId>
@@ -114,32 +109,11 @@
       <dependency>
           <groupId>com.alibaba</groupId>
           <artifactId>dubbo</artifactId>
-          <exclusions>
-              <!-- 排除spring的jar包依赖 -->
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring</artifactId>
-              </exclusion>
-          </exclusions>
       </dependency>
       <!-- zookeeper分布式协调服务 -->
       <dependency>
           <groupId>org.apache.zookeeper</groupId>
           <artifactId>zookeeper</artifactId>
-          <exclusions>
-              <exclusion>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-api</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>log4j</groupId>
-                  <artifactId>log4j</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>jline</groupId>
-                  <artifactId>jline</artifactId>
-              </exclusion>
-          </exclusions>
       </dependency>
       <!-- zkclient(zookeeper客户端) -->
       <dependency>
