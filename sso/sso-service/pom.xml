@@ -71,10 +71,10 @@
           <artifactId>spring-aop</artifactId>
       </dependency>   
           
-      <!-- MyBatis3 -->
       <dependency>
-          <groupId>org.mybatis.spring.boot</groupId>
-          <artifactId>mybatis-spring-boot-starter</artifactId>
+      	<groupId>com.styzf</groupId>
+      	<artifactId>styzf-mybatis-plus</artifactId>
+      	<version>${project.parent.version}</version>
       </dependency>
       <!-- MySql -->
       <dependency>

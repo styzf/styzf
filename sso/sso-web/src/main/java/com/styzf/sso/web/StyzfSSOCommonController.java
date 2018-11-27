@@ -16,6 +16,7 @@ import com.styzf.core.common.response.Response;
 import com.styzf.core.common.response.SuccessResponseData;
 import com.styzf.core.common.util.Assert;
 import com.styzf.core.common.util.IdWorker;
+import com.styzf.core.redis.RedisUtil;
 import com.styzf.sso.constant.SSOConstant;
 import com.styzf.sso.util.CodeUtil;
 import com.styzf.sso.util.CookieUtils;

@@ -26,24 +26,12 @@
     <dependency>
        <groupId>com.styzf</groupId>
        <artifactId>redis</artifactId>
+       <version>${project.parent.version}</version>
     </dependency>
     <dependency>
        <groupId>com.styzf</groupId>
        <artifactId>web</artifactId>
-       <exclusions>
-          <exclusion>
-              <groupId>net.logstash.logback</groupId>
-              <artifactId>logstash-logback-encoder</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>ch.qos.logback</groupId>
-              <artifactId>logback-core</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>ch.qos.logback</groupId>
-              <artifactId>logback-classic</artifactId>
-          </exclusion>
-       </exclusions>
+       <version>${project.parent.version}</version>
     </dependency>
     <!-- 配置servlet-api、jsp-api、el-api依赖(jsp视图) -->
     <dependency>
