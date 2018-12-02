@@ -8,6 +8,11 @@
   <artifactId>sso-web</artifactId>
   
   <dependencies>
+  	<dependency>
+  		<groupId>com.styzf</groupId>
+  		<artifactId>redis</artifactId>
+  		<version>1.0.0-SNAPSHOT</version>
+  	</dependency>
     <!-- Spring Boot提供了一种在启动时分析应用程序环境和打印诊断的方法,完成迁移后，请确保从项目的依赖项中删除此模块。 -->
     <dependency> 
         <groupId>org.springframework.boot</groupId> 
@@ -26,20 +31,6 @@
     <dependency>
        <groupId>com.styzf</groupId>
        <artifactId>web</artifactId>
-       <exclusions>
-          <exclusion>
-              <groupId>net.logstash.logback</groupId>
-              <artifactId>logstash-logback-encoder</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>ch.qos.logback</groupId>
-              <artifactId>logback-core</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>ch.qos.logback</groupId>
-              <artifactId>logback-classic</artifactId>
-          </exclusion>
-       </exclusions>
     </dependency>
     <!-- 配置servlet-api、jsp-api、el-api依赖(jsp视图) -->
     <dependency>
