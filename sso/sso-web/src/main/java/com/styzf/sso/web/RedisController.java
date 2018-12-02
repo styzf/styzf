@@ -2,24 +2,13 @@ package com.styzf.sso.web;
 
 import java.util.Set;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.styzf.core.common.base.PageDTO;
-import com.styzf.core.common.redis.RedisUtil;
-import com.styzf.core.common.util.IdWorker;
+import com.styzf.core.redis.RedisUtil;
 import com.styzf.sso.aspect.validated.annotation.RegisterValidated;
-import com.styzf.sso.constant.SSOConstant;
-import com.styzf.sso.dto.UserDto;
-import com.styzf.sso.dto.UserInfo;
-import com.styzf.sso.service.IStyzfUserService;
-import com.styzf.sso.util.CookieUtils;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
