@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.styzf.core.common.base.PageDTO;
 import com.styzf.core.common.constant.CommonConstant;
-import com.styzf.core.common.redis.RedisUtil;
 import com.styzf.core.common.util.IdWorker;
 import com.styzf.sso.aspect.validated.annotation.RegisterValidated;
 import com.styzf.sso.constant.SSOConstant;
