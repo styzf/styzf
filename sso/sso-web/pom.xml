@@ -36,6 +36,7 @@
     <dependency>
        <groupId>com.styzf</groupId>
        <artifactId>web</artifactId>
+       <version>${project.parent.version}</version>
     </dependency>
     <!-- 配置servlet-api、jsp-api、el-api依赖(jsp视图) -->
     <dependency>
