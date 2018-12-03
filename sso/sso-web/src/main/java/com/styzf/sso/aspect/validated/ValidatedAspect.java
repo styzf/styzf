@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.styzf.core.common.util.Assert;
+
 import com.styzf.core.redis.RedisUtil;
+import com.styzf.core.common.validation.RegEx;
 import com.styzf.sso.constant.SSOConstant;
 import com.styzf.sso.dto.UserDto;
 import com.styzf.sso.util.CookieUtils;

@@ -4,7 +4,8 @@ styzf:
       yyyy-MM-dd;yyyy-MM-dd-HH:mm:ss
   config:
     dubbo:
-      zookeeper-address: 192.168.114.129:2181,192.168.114.130:2181,192.168.114.131:2181
+#      zookeeper-address: 192.168.114.129:2181,192.168.114.130:2181,192.168.114.131:2181
+      zookeeper-address: 192.168.13.133:2181
       owner: styzf
       application-version: 2.0
       provider-version: styzf.2.0.0
@@ -15,41 +16,41 @@ styzf:
       payload: 1000000000
       dispatcher: all
     # kafka示例配置
-    kafka:
-      servers: 192.168.114.129:9092,192.168.114.130:9092,192.168.114.131:9092
-      consumerTopicConfig:
-          -
-            topic: TEST1
-            beanId: testService
-            responseTopic: STYZF_RESPONSE
-            sendTopics:
-          -
-            topic: TEST2
-            beanId: test2Service
-            responseTopic: STYZF_RESPONSE
-            sendTopics:
-          -
-            topic: STYZF_RESPONSE
-            beanId: kafkaResponseService
-            responseTopic:
-            sendTopics:
-      producer:
-        retries: 0
-        batch-size: 16348
-        linger-ms: 1
-        buffer-memory: 33554432
-        key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      consumer:
-        enable-auto-commit: true
-        auto-commit-interval-ms: 100
-        max-poll-records: 200
-        session-timeout-ms: 15000
-        poll-timeout: 300000
-        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        group-id: sso-group
-        auto-offset-reset: earliest
+#    kafka:
+#      servers: 192.168.114.129:9092,192.168.114.130:9092,192.168.114.131:9092
+#      consumerTopicConfig:
+#          -
+#            topic: TEST1
+#            beanId: testService
+#            responseTopic: STYZF_RESPONSE
+#            sendTopics:
+#          -
+#            topic: TEST2
+#            beanId: test2Service
+#            responseTopic: STYZF_RESPONSE
+#            sendTopics:
+#          -
+#            topic: STYZF_RESPONSE
+#            beanId: kafkaResponseService
+#            responseTopic:
+#            sendTopics:
+#      producer:
+#        retries: 0
+#        batch-size: 16348
+#        linger-ms: 1
+#        buffer-memory: 33554432
+#        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      consumer:
+#        enable-auto-commit: true
+#        auto-commit-interval-ms: 100
+#        max-poll-records: 200
+#        session-timeout-ms: 15000
+#        poll-timeout: 300000
+#        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        group-id: sso-group
+#        auto-offset-reset: earliest
  
 server:
     port: 60000
@@ -121,17 +122,17 @@ spring:
               readHost: styzf-read  #只读数据源
               isDefault: true   #缺省数据节点，要求必须指定唯一一个缺省数据节点
               
-   redis: 
-     cluster: 
-       nodes:
-#         - 192.168.114.129:8000        
-#         - 192.168.114.129:8001        
-         - 192.168.114.130:8002        
-         - 192.168.114.130:8003        
-         - 192.168.114.131:8004        
-         - 192.168.114.131:8005        
-       password:
-         styzf123456
+#   redis: 
+#     cluster: 
+#       nodes:
+##         - 192.168.114.129:8000        
+##         - 192.168.114.129:8001        
+#         - 192.168.114.130:8002        
+#         - 192.168.114.130:8003        
+#         - 192.168.114.131:8004        
+#         - 192.168.114.131:8005        
+#       password:
+#         styzf123456
    styzf-write:
          platform: mysql
          url: jdbc:mysql://192.168.114.129:3306/styzf_sso?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false

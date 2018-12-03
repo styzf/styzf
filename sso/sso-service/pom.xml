@@ -14,10 +14,6 @@
 	</dependency>
       <dependency>
          <groupId>com.styzf</groupId>
-         <artifactId>kafka</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>com.styzf</groupId>
          <artifactId>styzf-mybatis-plus</artifactId>
       </dependency>
       <dependency>

@@ -176,21 +176,11 @@
 	          <artifactId>orika-core</artifactId>
 	          <version>${orika.version}</version>
 	        </dependency>
-		    <dependency>
-			    <groupId>org.aspectj</groupId>
-			    <artifactId>aspectjweaver</artifactId>
-			    <version>${aspectjweaver.version}</version>
-			</dependency>
 	    	<dependency>
 			   <groupId>p6spy</groupId>
 			   <artifactId>p6spy</artifactId>
 			   <version>${p6spy.version}</version>
 			</dependency>
-            <dependency>  
-			  <groupId>org.aspectj</groupId>  
-			  <artifactId>aspectjrt</artifactId>  
-			  <version>${aspectj.version}</version>  
-			</dependency>  
 			<dependency>  
 			  <groupId>org.aspectj</groupId>  
 			  <artifactId>aspectjweaver</artifactId>  
