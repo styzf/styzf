@@ -6,7 +6,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.velocity.app.event.ReferenceInsertionEventHandler.referenceInsertExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.styzf.core.common.util.Assert;
-import com.styzf.core.common.validation.RegEx;
 import com.styzf.core.redis.RedisUtil;
 import com.styzf.sso.constant.SSOConstant;
 import com.styzf.sso.dto.UserDto;
@@ -65,9 +63,9 @@ public class ValidatedAspect {
                             StringUtils.isBlank(code)) {
                     Assert.throwException("errorKey.30000");
                 }
-                if (StringUtils.isBlank(stPhone) || stPhone.matches(RegEx.Phone.getContext())) {
-                    Assert.throwException("errorKey.30001");
-                }
+//                if (StringUtils.isBlank(stPhone) || stPhone.matches(RegEx.Phone.getContext())) {
+//                    Assert.throwException("errorKey.30001");
+//                }
                 if (StringUtils.isBlank(stPassword)) {
                     Assert.throwException("errorKey.30002");
                 }

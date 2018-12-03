@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  
+  <!-- 控制台输出 -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>/usr/local/tomcat/logs/elk.log</File>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>/usr/local/tomcat/logs/elk.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize> <!-- 每个文件最大100MB -->
+        <maxHistory>30</maxHistory><!-- 保存30天的日志 -->
+        <totalSizeCap>3GB</totalSizeCap><!-- 最大日志存储为3GB -->
+    </rollingPolicy>
+  </appender>
+  
+  <root level="info">
+    <appender-ref ref="FILE"/>
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>

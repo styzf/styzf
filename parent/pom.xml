@@ -2,31 +2,38 @@
 	     xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
 	     xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent> 
-		<groupId>org.springframework.boot</groupId> 
-		<artifactId>spring-boot-starter-parent</artifactId> 
-		<version>2.0.4.RELEASE</version> 
+		  <groupId>com.styzf</groupId>
+		  <artifactId>common-parent</artifactId>
+		  <version>1.0.0-SNAPSHOT</version>
 	</parent>
   
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.styzf</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-  
-  	 <!-- 定义全局的属性(定义jar包的版本号) -->
+    
+	<distributionManagement>
+	    <repository>
+	      <id>release</id>
+	      <name>release resp</name>
+	      <url>http://120.77.44.99:8081/nexus/content/repositories/releases/</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>snapshots</id>
+	      <name>snapshots resp</name>
+	      <url>http://120.77.44.99:8081/nexus/content/repositories/snapshots/</url>
+	    </snapshotRepository>
+	</distributionManagement>
+  	
+  	<!-- 定义全局的属性(定义jar包的版本号) -->
     <properties>
         <java.version>1.8</java.version>
-        <!-- <spring.version>4.3.4.RELEASE</spring.version> -->
-        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
-        <mybatis-plus.version>2.1.9</mybatis-plus.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <slf4j.version>1.7.5</slf4j.version>
         <jackson.version>2.9.0</jackson.version>
         <c3p0.version>0.9.5.2</c3p0.version>
         <pagehelper.version>5.0.0</pagehelper.version>
         <mapper.version>3.4.0</mapper.version>
         <jedis.version>2.9.0</jedis.version>
-        <dubbo.version>2.5.3</dubbo.version>
+        <dubbo.version>2.6.2</dubbo.version>
         <zookeeper.version>3.4.8</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
         <solrj.version>5.3.0</solrj.version>
@@ -43,105 +50,37 @@
         <poi.version>3.9</poi.version>
         <velocity.version>1.7</velocity.version>
         <jdom.version>1.1.3</jdom.version>
-        <logstash.version>4.11</logstash.version>
         <springfox.swagger.version>2.5.0</springfox.swagger.version>
         <fastjson.version>1.2.31</fastjson.version>
         <axis.version>1.4</axis.version>
         <hibernate-validator.version>6.0.11.Final</hibernate-validator.version>
         
-        <commons-httpclient.version>3.1</commons-httpclient.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
-        <commons-codec.version>1.9</commons-codec.version>
-        <commons-lang3.version>3.3.2</commons-lang3.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <commons-io.version>1.3.2</commons-io.version>
-        <commons-net.version>3.3</commons-net.version>
-        <commons-logging.version>1.2</commons-logging.version>
-        <commons-discovery.version>0.2</commons-discovery.version>
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <commons-pool2.version>2.4.2</commons-pool2.version>
-        
         <kafka.version>1.1.0</kafka.version>
         <spring.integration.kafka.version>2.1.0.RELEASE</spring.integration.kafka.version>
         
-        <logback.version>1.2.0</logback.version>
+        <lombok.version>1.16.16</lombok.version>
         <logstash.version>4.11</logstash.version>
-        
-        <styzf-core.version>1.0.0-SNAPSHOT</styzf-core.version>
-        <styzf-mybatis-plus.version>1.0.0-SNAPSHOT</styzf-mybatis-plus.version>
-        <styzf-kafka.version>1.0.0-SNAPSHOT</styzf-kafka.version>
     </properties>
     
     <!-- 依赖管理配置(用于锁定指定版本) -->
     <dependencyManagement>
 	    <dependencies>
-		    <dependency>
-	             <groupId>com.styzf</groupId>
-	             <artifactId>kafka</artifactId>
-	             <version>${styzf-kafka.version}</version>
-	             <exclusions>
-			         <exclusion>
-			             <groupId>org.apache.commons</groupId>
-			             <artifactId>commons-lang3</artifactId>
-			         </exclusion>
-		         </exclusions>
+	    	<dependency>
+		        <groupId>org.projectlombok</groupId>
+		        <artifactId>lombok</artifactId>
+		        <version>${lombok.version}</version>
+		    </dependency>
+ 		    <dependency>
+	            <groupId>net.logstash.logback</groupId>
+	            <artifactId>logstash-logback-encoder</artifactId>
+	            <version>${logstash.version}</version>
 	        </dependency>
-		    <dependency>
-	            <groupId>com.styzf</groupId>
-	            <artifactId>styzf-mybatis-plus</artifactId>
-	            <version>${styzf-mybatis-plus.version}</version>
-	            <exclusions>
-		            <exclusion>
-		                <groupId>commons-lang</groupId>
-		                <artifactId>commons-lang</artifactId>
-		            </exclusion>
-		            <exclusion>
-		                <groupId>org.apache.commons</groupId>
-		                <artifactId>commons-lang3</artifactId>
-		            </exclusion>
-		        </exclusions>
-	        </dependency>
-	        <dependency>
-	           <groupId>com.styzf</groupId>
-	           <artifactId>web</artifactId>
-	           <version>${styzf-core.version}</version>
-	        </dependency>
-	        <dependency>
-	           <groupId>com.styzf</groupId>
-	           <artifactId>log</artifactId>
-	           <version>${styzf-core.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.styzf</groupId>
-	            <artifactId>common</artifactId>
-	            <version>${styzf-core.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.baomidou</groupId>
-	            <artifactId>mybatis-plus-support</artifactId>
-	            <version>${mybatis-plus.version}</version>
-	        </dependency>
+	        
 		    <dependency>
 	            <groupId>org.hibernate</groupId>
 	            <artifactId>hibernate-validator</artifactId>
 	            <version>${hibernate-validator.version}</version>
 	        </dependency>
-		    <dependency>
-	            <groupId>net.logstash.logback</groupId>
-	            <artifactId>logstash-logback-encoder</artifactId>
-	            <version>${logstash.version}</version>
-	        </dependency>
-	        <!-- 日志 -->
-	        <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency> 
 	        <dependency>
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity</artifactId>
@@ -169,20 +108,6 @@
                 <groupId>org.springframework.integration</groupId>
                 <artifactId>spring-integration-kafka</artifactId>
                 <version>${spring.integration.kafka.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                    </exclusion>
-                </exclusions>
                 <scope>compile</scope>
             </dependency>
 			<!-- activeMQ依赖 -->
@@ -328,41 +253,6 @@
 			    <version>${spring.version}</version>
 			</dependency>
             
-            <dependency>
-		        <groupId>com.baomidou</groupId>
-		        <artifactId>mybatis-plus</artifactId>
-		        <version>${mybatis-plus.version}</version>
-		    </dependency>
-		    <dependency>
-	          <groupId>org.mybatis.spring.boot</groupId>
-	          <artifactId>mybatis-spring-boot-starter</artifactId>
-	          <version>${mybatis-spring-boot-starter.version}</version>
-	        </dependency>
-            <!-- 分页插件 -->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper.version}</version>
-            </dependency>
-            <!-- 通用Mapper -->
-            <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper</artifactId>
-                <version>${mapper.version}</version>
-            </dependency>
-            <!-- 连接池 -->
-            <dependency>
-                <groupId>com.mchange</groupId>
-                <artifactId>c3p0</artifactId>
-                <version>${c3p0.version}</version>
-            </dependency>
-            
-            <!-- 日志 -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
             <!-- Jackson JSON处理工具包 -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -370,86 +260,11 @@
                 <version>${jackson.version}</version>
             </dependency>
             
-            <!-- apache工具组件 -->
-            <dependency>
-	            <groupId>commons-beanutils</groupId>
-	            <artifactId>commons-beanutils</artifactId>
-	            <version>${commons-beanutils.version}</version>
-	        </dependency>
-            <dependency>
-                <groupId>commons-discovery</groupId>
-                <artifactId>commons-discovery</artifactId>
-                <version>${commons-discovery.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>commons-httpclient</groupId>
-                <artifactId>commons-httpclient</artifactId>
-                <version>${commons-httpclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons-lang.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
-
-            <!-- 文件上传组件 -->
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>${commons-fileupload.version}</version>
-            </dependency>
-            <!-- 加密解密 -->
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>${commons-codec.version}</version>
-            </dependency>
-            <!-- 日志 -->
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${commons-logging.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-pool2</artifactId>
-                <version>${commons-pool2.version}</version>
-            </dependency>
-            
             <!-- dubbo相关 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
-                <exclusions>
-                    <!-- 排除spring的jar包依赖 -->
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <!-- zookeeper分布式协调服务 -->
             <dependency>
@@ -525,6 +340,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
     <!-- 项目构建部分 -->
     <build>
         <finalName>${project.artifactId}</finalName>
