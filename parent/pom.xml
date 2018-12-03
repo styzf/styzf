@@ -15,19 +15,18 @@
 	    <repository>
 	      <id>release</id>
 	      <name>release resp</name>
-	      <url>http://192.168.13.135:8082/nexus/content/repositories/releases/</url>
+	      <url>http://120.77.44.99:8081/nexus/content/repositories/releases/</url>
 	    </repository>
 	    <snapshotRepository>
 	      <id>snapshots</id>
 	      <name>snapshots resp</name>
-	      <url>http://192.168.13.135:8082/nexus/content/repositories/snapshots/</url>
+	      <url>http://120.77.44.99:8081/nexus/content/repositories/snapshots/</url>
 	    </snapshotRepository>
 	</distributionManagement>
   	
   	<!-- 定义全局的属性(定义jar包的版本号) -->
     <properties>
         <java.version>1.8</java.version>
-        <!-- <spring.version>4.3.4.RELEASE</spring.version> -->
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <jackson.version>2.9.0</jackson.version>
         <c3p0.version>0.9.5.2</c3p0.version>
