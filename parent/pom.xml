@@ -27,7 +27,7 @@
   	<!-- 定义全局的属性(定义jar包的版本号) -->
     <properties>
         <java.version>1.8</java.version>
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <jackson.version>2.9.0</jackson.version>
         <c3p0.version>0.9.5.2</c3p0.version>
         <pagehelper.version>5.0.0</pagehelper.version>
